@@ -1,40 +1,41 @@
 var assert = require('assert'),
-    wordStats = require('word-stats'),
-    markov = require('../index');
+    markov = require('../index'),
+    generate = markov.generate,
+    calculate = markov.calculateStats;
 
 describe('Markov words', function() {
     describe('generate', function() {
         it('should fail', function() {
             assert.throws(function() {
-                markov.generate();
+                generate();
             });
             assert.throws(function() {
-                markov.generate(wordStats.calculate(), 3);
+                generate(calculate(), 3);
             });
         });
 
         it('should generate aaa', function() {
-            var result = markov.generate(wordStats.calculate(['aaa']), 3);
+            var result = generate(calculate(['aaa']), 3);
             assert.equal('aaa', result[0]);
             assert.equal(1, result.length);
-            result = markov.generate(wordStats.calculate(['aaa']), 3, 1);
+            result = generate(calculate(['aaa']), 3, 1);
             assert.equal('aaa', result[0]);
             assert.equal(1, result.length);
         });
 
         it('should generate aaa twice', function() {
-            var result = markov.generate(wordStats.calculate(['aaa']), 3, 2);
+            var result = generate(calculate(['aaa']), 3, 2);
             assert.equal('aaa', result[0]);
             assert.equal('aaa', result[1]);
             assert.equal(2, result.length);
         });
 
         it('should generate aaa and aab', function() {
-            var stats = wordStats.calculate(['aaa', 'aab']);
+            var stats = calculate(['aaa', 'aab']);
             var aaa = false;
             var aab = false;
             for(var i = 0; i < 100000; i++) {
-                var result = markov.generate(stats, 3);
+                var result = generate(stats, 3);
                 assert.equal(1, result.length);
                 if (result[0] === 'aaa') {
                     aaa = true;
