@@ -1,5 +1,5 @@
 # markov-words
-Node package to generate pronounceable words via Markov chains.
+Node package to generate pronounceable random words via Markov chains.
 ```js
 var markov = require('markov-words'),
     result = markov.generate(stats, 8); // generate an array of one 8 letter word
