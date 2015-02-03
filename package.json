@@ -1,0 +1,25 @@
+{
+  "name": "markov-words",
+  "version": "0.1.0",
+  "description": "Generates pronounceable random words via Markov chains",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidminor/markov-words.git"
+  },
+  "keywords": [
+    "pronounceable english password generator"
+  ],
+  "author": "David Minor <daveminor@gmail.com> (http://davidminor.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidminor/markov-words/issues"
+  },
+  "homepage": "https://github.com/davidminor/markov-words",
+  "devDependencies": {
+    "word-stats": "^0.1.0"
+  }
+}
